@@ -1,14 +1,16 @@
 <?php
+include  __DIR__ .'/../handler/autoload.php';
+include  __DIR__ .'/database.php';
 
-include  __DIR__ . "/../handler/caller.php";
-call("env");
+  $autoloader = new Autoloader();
+  $db = new Database();
 
-	$dbhost = env('DB_HOST');
-	$dbuser = env('DB_USERNAME');
-	$dbpass = env('DB_PASSWORD');
-	$dbname = env('DB_NAME');
-	$conn = mysqli_connect($dbhost, $dbuser, $dbpass);
-	mysqli_select_db($conn, $dbname);
+  $host = $autoloader->env('DB_HOST');
+  $username = $autoloader->env('DB_USERNAME');
+  $password = $autoloader->env('DB_PASSWORD');
+  $db_name = $autoloader->env('DB_NAME');
 
+  $db->setCon($host,$username,$password,$db_name);
+  $conn = $db->connect();
 
-?>
+ ?>
