@@ -4,7 +4,7 @@
   use Database\Helper;
 
   class User extends Helper {
-    
+
   }
 
   $user = new User("user");
